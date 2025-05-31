@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="7th Pay Commission Salary Calculator for Indian Government Employees. Calculate your total salary including DA, HRA and other allowances.">
+  <meta name="keywords" content="7th Pay Calculator, DA, HRA, Salary Calculator India, Government Employee">
+  <meta name="author" content="kwsmartkaran">
+  <title>7th Pay Commission Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #0a58ca;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #0a58ca;
+      color: white;
+      padding: 10px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 16px;
+    }
+    .result {
+      background-color: #fff;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>7th Pay Commission Calculator</h1>
+
+  <label for="basicPay">Enter Basic Pay (₹):</label>
+  <input type="number" id="basicPay" placeholder="e.g., 30000" />
+
+  <button onclick="calculateSalary()">Calculate</button>
+
+  <div class="result" id="result" style="display:none;">
+    <h3>Salary Breakdown:</h3>
+    <p><strong>Basic Pay:</strong> ₹<span id="basicResult"></span></p>
+    <p><strong>DA (38%):</strong> ₹<span id="daResult"></span></p>
+    <p><strong>HRA (16%):</strong> ₹<span id="hraResult"></span></p>
+    <p><strong>Other Allowances:</strong> ₹<span id="otherResult"></span></p>
+    <hr />
+    <p><strong>Total Gross Salary:</strong> ₹<span id="totalResult"></span></p>
+  </div>
+
+  <script>
+    function calculateSalary() {
+      const basicPay = parseFloat(document.getElementById("basicPay").value);
+      if (isNaN(basicPay) || basicPay <= 0) {
+        alert("Please enter a valid Basic Pay amount.");
+        return;
+      }
+
+      const da = basicPay * 0.38;
+      const hra = basicPay * 0.16;
+      const other = basicPay * 0.10;
+      const total = basicPay + da + hra + other;
+
+      document.getElementById("basicResult").textContent = basicPay.toFixed(2);
+      document.getElementById("daResult").textContent = da.toFixed(2);
+      document.getElementById("hraResult").textContent = hra.toFixed(2);
+      document.getElementById("otherResult").textContent = other.toFixed(2);
+      document.getElementById("totalResult").textContent = total.toFixed(2);
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
